@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../a file of wue.js/vue.js"></script>
+    <script src="https://unpkg.com/marked"></script>
+    <style>
+        .app{
+            display: -webkit-flex;
+            display: flex;
+          
+     
+            background-color: lightgrey;
+        }
+
+        
+        .a,.b,.c{
+            /* border: 2px solid red; */
+            height: 1000px;
+            /* position: absolute; */
+            /* float: right; */
+        }
+        .a{
+            background-color: royalblue;
+            width: 20%;
+           
+            /* left: 0%; */
+            /* top: 0%; */
+
+        }
+        .b{
+            
+            width: 40%;
+          
+            /* left: 20%; */
+            /* top: 0%; */
+        }
+        .c{
+            background-color:teal;
+     
+            width: 40%;
+            /* left: 60%; */
+            /* top: 0%; */
+        }
+    </style>
+</head>
+<body>
+    <div class="app" id="app">
+
+        <div class="a" v-html="os">
+             
+        </div>
+        <div class="b">
+            <textarea v-model="sb" style="width: 100%;height: 100%;background-color: salmon;">
+                    
+            </textarea>
+        </div>
+        <div class="c" ></div>
+    </div>
+    <script>
+        // const html=marked('#hello')
+        // console.log(html)
+        var vm =new Vue({
+            el:"#app",
+            data:{
+                sb:""
+            },
+            computed:{
+                    os(){
+                        return marked(this.sb)
+                    }
+                },
+            watch:{
+                os(val,oldval){
+                    console.log("new: ",val,"old: ",oldval)
+                    localStorage.setItem('sb',val)
+                }
+            },
+            created(){
+                this.sb=localStorage.getItem('sb')
+            }
+            
+        })
+    </script>
+  
+</body>
+</html>
