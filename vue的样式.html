@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../a file of wue.js/vue.js"></script>
+    <style>
+        .a{
+            color:chartreuse
+        }
+        .thin{
+            font-style: italic;
+        }
+        .active{
+            letter-spacing: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 class="a thin">this is a very large h1</h1>
+        <h1 :class="['a','thin',flag?'active':''] ">this is a very large h1</h1>
+        <input type="text" v-model="flag">
+        <input type="button" @click="ss" value="i'm a bad button">
+        <input type="text" v-model="v">
+        <h1>{{false}}</h1>
+        <h1>{{v}}</h1>
+    </div>
+    <script>
+        var vm =new Vue({
+            el:"#app",
+            data:{
+              flag:false,
+              v:"晚上敷面膜"
+            },
+            methods:{
+                ss(){
+                    this.flag="false"
+                    
+                }
+            }
+        })
+    </script>    
+</body>
+</html>
